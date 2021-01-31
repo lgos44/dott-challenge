@@ -6,7 +6,7 @@ For example:
 
 ```
 1-3 months: 200 orders
-4-6 months: 150 orders``
+4-6 months: 150 orders
 7-12 months: 50 orders
 >12 months: 20 orders
 ```
@@ -19,7 +19,7 @@ The file orders.jar will be generated at `./target/scala-2.13/orders.jar`.
 
 It can be used as:
 
-```java -jar ./target/scala-2.13/orders.jar -s "2020-01-01 00:00:00" -e "2021-01-01 00:00:00```
+```java -jar ./target/scala-2.13/orders.jar -s "2020-01-01 00:00:00" -e "2021-01-01 00:00:00"```
  
  
 # Usage
