@@ -51,10 +51,6 @@ object Options {
     dateTime.atZone(ZoneId.systemDefault()).toInstant
   }
 
-  def validateIntervals(intervals: Seq[Interval]): String = {
-    ""
-  }
-
   def parseInterval(str: String): Interval =  {
     val closedPattern =  raw"(\d+)-(\d+)".r
     val openPattern =  raw">(\d+)".r

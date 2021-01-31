@@ -8,13 +8,29 @@ import dott.options.{ClosedInterval, Interval, OpenInterval, Options}
 
 class OrderAggregator(options: Options, now: Instant = Instant.now()) extends LazyLogging {
 
+  /**
+   * Finds the interval a given age is
+   * @param value age
+   * @param intervals list of intervals
+   * @return
+   */
   def getInterval(value: Long, intervals: Seq[Interval]): Option[Interval] = {
     intervals.find(i => i.isIn(value))
   }
 
+  /**
+   * Calculates age of a product
+   * @param product a product entity
+   * @return
+   */
   def calculateAge(product: model.Product): Long =
     Duration.between(product.createdAt, now).toDays / 30
 
+  /**
+   * Filters and aggregates orders counting the number of orders with products in a given interval
+   * @param orders List of orders
+   * @return Map of Intervals to number of orders
+   */
   def aggregate(orders: List[Order]): Map[Option[Interval], Int] = {
     orders
       .filter(order => order.placedAt.isAfter(options.start) && order.placedAt.isBefore(options.end))
